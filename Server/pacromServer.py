@@ -13,7 +13,8 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 
 	def handle_localRegister(self, db, p):
 		userName = p.getLocalUserName(p)
-		
+		address = p.getLocalIP(p)
+
 		if db.AddMemberToLocalChat(userName):
 			self.request.sendall("Successfully Registered")
 		else:
@@ -27,13 +28,16 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 
 	def handle_localDelete(self,db,p):
 		userName = p.getLocalUserName(p)
+		address = p.getLocalIP(p)
 
 		if db.removeMemberFromLocalChat(userName):
 			self.request.sendall("Successfully Removed")
 		else:
 			self.request.sendall("AHK")
-	def handle_localChatUsers(self, db):
-		users = db.GetLocalChatUsers() 
+			
+	def handle_localChatUsers(self, db,address):
+		address = p.getLocalIP(p)
+		users = db.GetLocalChatUsers(address) 
 		if len(users) == 0:
 			self.request.sendall("NoUsers")
 		else:

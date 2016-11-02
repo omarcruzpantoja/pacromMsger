@@ -23,9 +23,13 @@ class pacrom_db:
 		except:
 			return 0
 
-	def AddMemberToLocalChat(self, userName):
+	def AddMemberToLocalChat(self, userName, address):
 		"""Once a user logged in to the local server, add them to the connected users"""
+<<<<<<< HEAD
 		query = """INSERT INTO localUser (uname) values ("%s")""" % userName
+=======
+		query = """INSERT INTO localUser (uname, ipAddress) values ("%s", "%s")""" % (userName, address)
+>>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
 		if userName == "":
 			return 0
 		try: 
@@ -38,9 +42,13 @@ class pacrom_db:
 			else:
 				raise
 
-	def removeMemberFromLocalChat(self, userName) :
+	def removeMemberFromLocalChat(self, userName,address) :
 		"""Remove user from localchat once DC or logout"""
+<<<<<<< HEAD
 		query = """DELETE FROM localUser where uname = ("%s")""" % userName
+=======
+		query = """DELETE FROM localUser where uname = ("%s") and ipAddress = ("%s") """ % (userName, address)
+>>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
 		try:
 			self.c.execute(query)
 			print "DC from local chat [" +userName+"]\n"
@@ -48,9 +56,9 @@ class pacrom_db:
 		except:
 			return 0
 
-	def GetLocalChatUsers(self):
+	def GetLocalChatUsers(self,address):
 		"""Will be used to show all the connected users in the local server"""
-		query = """ SELECT uname FROM localUser"""
+		query = """ SELECT uname FROM localUser where ipAddress = ("%s") """ % address
 
 		try:
 			self.c.execute(query)
@@ -66,6 +74,7 @@ def runLocalChat():
 
 # test = pacrom_db("pacromDB.db")
 # test.Connect()
+<<<<<<< HEAD
 # def Adduser():
 
 # 	add = pacrom_db("pacromDB.db")
@@ -80,3 +89,5 @@ def runLocalChat():
 # hey = hey[:-1]
 # print hey
 # 	
+=======
+>>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
