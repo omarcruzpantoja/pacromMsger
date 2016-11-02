@@ -25,11 +25,7 @@ class pacrom_db:
 
 	def AddMemberToLocalChat(self, userName, address):
 		"""Once a user logged in to the local server, add them to the connected users"""
-<<<<<<< HEAD
-		query = """INSERT INTO localUser (uname) values ("%s")""" % userName
-=======
 		query = """INSERT INTO localUser (uname, ipAddress) values ("%s", "%s")""" % (userName, address)
->>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
 		if userName == "":
 			return 0
 		try: 
@@ -44,11 +40,7 @@ class pacrom_db:
 
 	def removeMemberFromLocalChat(self, userName,address) :
 		"""Remove user from localchat once DC or logout"""
-<<<<<<< HEAD
-		query = """DELETE FROM localUser where uname = ("%s")""" % userName
-=======
 		query = """DELETE FROM localUser where uname = ("%s") and ipAddress = ("%s") """ % (userName, address)
->>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
 		try:
 			self.c.execute(query)
 			print "DC from local chat [" +userName+"]\n"
@@ -74,20 +66,3 @@ def runLocalChat():
 
 # test = pacrom_db("pacromDB.db")
 # test.Connect()
-<<<<<<< HEAD
-# def Adduser():
-
-# 	add = pacrom_db("pacromDB.db")
-# 	add.Connect()
-# 	add.AddMemberToLocalChat("slimshady") 
-# Adduser() 
-# lala =  test.GetLocalChatUsers() 
-# hey= ""
-# for data in lala:
-# 	hey = hey + data[0]+":"
-
-# hey = hey[:-1]
-# print hey
-# 	
-=======
->>>>>>> d1ffcb6abffe5bde8ea69858e63c77859f15f9fc
