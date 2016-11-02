@@ -3,7 +3,8 @@ def createDB():
 	conn = sqlite3.connect("pacromDB.db")
 
 	c = conn.cursor()
-
+	c.execute("""DROP TABLE localUser""")
+	c.execute("""DROP TABLE chatUser""")
 	c.execute("""CREATE TABLE localUser (uname TEXT UNIQUE NOT NULL) """)
 	
 

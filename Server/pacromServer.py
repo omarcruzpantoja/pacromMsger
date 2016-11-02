@@ -39,8 +39,7 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 		else:
 			request = ""
 			for user in users:
-				request = user[0]+":"
-			request = request[:-1]
+				request = request + user[0]+":"
 			self.request.sendall(request)
 			
 
@@ -66,7 +65,7 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 if __name__ == "__main__":
     global HOST
     HOST, PORT = "192.168.0.14", 4001
-    runLocalChat()
+#    runLocalChat()
 
     if len(sys.argv) > 1:
     	try:

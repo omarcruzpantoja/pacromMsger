@@ -26,11 +26,11 @@ class pacrom_db:
 	def AddMemberToLocalChat(self, userName):
 		"""Once a user logged in to the local server, add them to the connected users"""
 		query = """INSERT INTO localUser (uname) values ("%s")""" % userName
-		print "Added to local chat [" + userName + "]\n"
 		if userName == "":
 			return 0
 		try: 
 			self.c.execute(query)
+			print "Added to local chat [" + userName + "]\n"
 			return 1
 		except sqlite3.IntegrityError as error:
 			if error.message.split()[0] == "UNIQUE":
@@ -41,9 +41,9 @@ class pacrom_db:
 	def removeMemberFromLocalChat(self, userName) :
 		"""Remove user from localchat once DC or logout"""
 		query = """DELETE FROM localUser where uname = ("%s")""" % userName
-		print "DC from local chat [" +userName+"]\n"
 		try:
 			self.c.execute(query)
+			print "DC from local chat [" +userName+"]\n"
 			return 1
 		except:
 			return 0
