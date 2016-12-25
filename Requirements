@@ -1,0 +1,62 @@
+Local and pub messenger
+
+The application will have 2 main options which the user will decide to use.
+
+Local messenger
+If the user decides to use the local messenger, he will only have to add a username and press connect. Once the user connects he will be able to post any message he wants. Data from the local chat will not have any database. All messages will be anonymous, the user at its own risk may give details of his life and reveal his identity.
+The local chat will be allowed to have photos added to it, no downloadable content, other than pictures will be allowed to be added in the chat room. No audio will be allowed in this section either. 
+
+If the user decides to use local chat, he will not be allowed to add any friends and or make private chat with other people. While in the chat, if someone sends a message, the message will contain the user's username and the time which the message was sent. Since there is no database, once the application is closed all messages will appear deleted and the user will not be able to recolect any data. 
+
+Requirements:
+User must login with a username
+Usernames in the chat cant appear twice(only one person allowed to have an specific username)
+
+
+Pub messenger
+User must authenticate in order to be able to connect (there will be a log in)
+User will be able to add friends, in order to add a friend, the request must be mutual(if one send the add request, the other must accept, or both must add each other)
+User will be able to have multiple chats with his friends, there will be 1 open chat for all connected users to be able to enter the chat. 
+Chat will have a max restriction of allowed users. 
+After inactive for 5 minutes in the open chat, user will be kicked out
+When the user is inactive for 5 minutes, it will automatically set the user to idle
+User will be able to set itself in idle mode or offline mode
+Offline mode - User can see all the people online and may be able to start a conversation but friends will see him as offline.
+Blocking users - Since friendship is mutual, you will be able to block request from certain users, if user wishes to block someone from their lost, the user must delete from friendship and if dont want to allow requests, add to blocking list. (block list will contain all the accounts the user won't want requests to come from.)
+User will be allowed to change it's "name", by default the username's name will be the ID of the account. 
+In order to register user must enter an id, password and email
+account must be activated in orde to be used.
+There will be a register account web page to create accounts. 
+Users will be allowed to send any file through friend chats only.
+Emoticons will be allowed and integrated
+Users will be allowed to display a message 
+
+--(CUSTOM)Personal icons -> maybe yes maybe not don't know yet. 
+
+
+DB Design
+
+Local:
+
+User- Users connected atm
+	username
+	localIP
+
+Pub:
+
+User- Accounts created for each user
+	Username- Log in ID
+	Password- Key to login
+	Name- Display name in messanger
+	Message- To be displayed in the messanger
+	Status- Online/Idle/ect
+	Friends
+	Block list
+	Picture
+Chat
+	Complete log(this can be list of messages)
+
+Public chat
+	-Users in chat 
+
+
