@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 
+
 namespace Ui {
 class localGUI;
 }

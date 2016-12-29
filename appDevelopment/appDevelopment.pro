@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         chatgui.cpp \
-    login.cpp
+    login.cpp \
+    pacromLib.cpp
 
 HEADERS  += chatgui.h \
-    login.h
+    login.h \
+    pacromLib.h
 
 FORMS    += chatgui.ui \
     login.ui

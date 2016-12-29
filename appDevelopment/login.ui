@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -117,7 +117,7 @@
  name</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="localUName">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -161,7 +161,7 @@
          <string>Set the local IP Address</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="localIPAddress">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -184,9 +184,43 @@
        </widget>
       </widget>
      </widget>
+     <widget class="QLabel" name="errorLocalUN">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>140</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Username already
+in use or incorrect 
+username</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="localServerR">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Connection to server
+refused</string>
+      </property>
+     </widget>
      <zorder>localTitle</zorder>
      <zorder>groupBox</zorder>
      <zorder>localConnect</zorder>
+     <zorder>errorLocalUN</zorder>
+     <zorder>localServerR</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -347,13 +381,13 @@
        <rect>
         <x>270</x>
         <y>80</y>
-        <width>121</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Wrong email/id or
- password</string>
+       <string>THIS IS NOT 
+ FUNCTIONAL ATM</string>
       </property>
      </widget>
      <widget class="QLabel" name="forgotPw_3">

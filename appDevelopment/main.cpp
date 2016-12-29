@@ -1,6 +1,8 @@
 #include "chatgui.h"
 #include "login.h"
+#include "pacromLib.h"
 #include <QApplication>
+//#include <thread>
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +12,7 @@ int main(int argc, char *argv[])
     test.show() ;
 
    // w.show();
+
 
     return a.exec();
 }
