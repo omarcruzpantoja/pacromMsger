@@ -13,16 +13,17 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 
 	def handle_localRegister(self, db, p):
 		userName = p.getLocalUserName(p)
+		
 		if db.AddMemberToLocalChat(userName):
 			self.request.sendall("Successfully Registered")
 		else:
 			self.request.sendall("DUP")
-		address = p.packet[2]
-		self.request.recv(2048)
-		if address == HOST:
-			self.request.sendall("Successfully Connected")
-		else:
-			self.request.sendall("AHK") 
+		# address = p.packet[2]
+		# self.request.recv(2048)
+		# if address == HOST:
+		# 	self.request.sendall("Successfully Connected")
+		# else:
+		# 	self.request.sendall("AHK") 
 
 
 	def handle(self):
@@ -34,14 +35,14 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 		p.decodePacket()
 	
 		cmd = p.getCommand()
-	
+		print cmd 
 		if cmd == "registerLocalChat":
 			self.handle_localRegister(db, p)
 
 
 if __name__ == "__main__":
     global HOST
-    HOST, PORT = "127.0.0.1", 8000
+    HOST, PORT = "192.168.0.21", 4001
 
     if len(sys.argv) > 1:
     	try:

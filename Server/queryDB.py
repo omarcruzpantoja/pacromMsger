@@ -38,6 +38,8 @@ class pacrom_db:
 			else:
 				raise
 
+	
+
 	def GetLocalChatUsers(self):
 		"""Will be used to show all the connected users in the local server"""
 		query = """ SELECT * FROM localUser"""
