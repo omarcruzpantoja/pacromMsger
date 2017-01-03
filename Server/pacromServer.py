@@ -21,9 +21,19 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 		# address = p.packet[2]
 		# self.request.recv(2048)
 		# if address == HOST:
-		# 	self.request.sendall("Successfully Connected")
+		# 	self.request.sendallg("Successfully Connected")
 		# else:
 		# 	self.request.sendall("AHK") 
+
+	def handle_localDelete(self,db,p):
+		userName = p.getLocalUserName(p)
+
+		if db.removeMemberFromLocalChat(userName):
+			self.request.sendall("Successfully Removed")
+			print "Deleted"
+		else:
+			self.request.sendall("AHK")
+			print "Fail"
 
 
 	def handle(self):
@@ -38,6 +48,8 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 		print cmd 
 		if cmd == "registerLocalChat":
 			self.handle_localRegister(db, p)
+		elif cmd == "removeLocalChat":
+			self.handle_localDelete(db, p)
 
 
 if __name__ == "__main__":
