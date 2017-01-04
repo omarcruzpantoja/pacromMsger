@@ -26,7 +26,7 @@ class pacrom_db:
 	def AddMemberToLocalChat(self, userName):
 		"""Once a user logged in to the local server, add them to the connected users"""
 		query = """INSERT INTO localUser (uname) values ("%s")""" % userName
-		print "Added to local chat [" + userName + "]"
+		print "Added to local chat [" + userName + "]\n"
 		if userName == "":
 			return 0
 		try: 
@@ -41,7 +41,7 @@ class pacrom_db:
 	def removeMemberFromLocalChat(self, userName) :
 		"""Remove user from localchat once DC or logout"""
 		query = """DELETE FROM localUser where uname = ("%s")""" % userName
-		print "DC from local chat [" +userName+"]"
+		print "DC from local chat [" +userName+"]\n"
 		try:
 			self.c.execute(query)
 			return 1
@@ -57,3 +57,19 @@ class pacrom_db:
 			return self.c.fetchall()
 		except:
 			return 0
+
+def runLocalChat():
+	conn = sqlite3.connect("pacromDB.db")
+	c = conn.cursor()
+	c.execute("""DROP TABLE localUser""")
+	c.execute("""CREATE TABLE localUser (uname TEXT UNIQUE NOT NULL) """)
+
+# test = pacrom_db("pacromDB.db")
+# test.Connect()
+# def Adduser():
+
+# 	add = pacrom_db("pacromDB.db")
+# 	add.Connect()
+# 	add.AddMemberToLocalChat("slimshady") 
+# Adduser() 
+# print test.GetLocalChatUsers() 

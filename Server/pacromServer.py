@@ -30,10 +30,19 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 
 		if db.removeMemberFromLocalChat(userName):
 			self.request.sendall("Successfully Removed")
-			print "Deleted"
 		else:
 			self.request.sendall("AHK")
-			print "Fail"
+	def handle_localChatUsers(self, db):
+		users = db.GetLocalChatUsers() 
+		if len(users) = 0:
+			self.request.sendall("NoUsers")
+		else:
+			request = ""
+			for user in users:
+				request = user+":"
+			request = request[-1]
+			self.request.sendall(request)
+			
 
 
 	def handle(self):
@@ -50,11 +59,14 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 			self.handle_localRegister(db, p)
 		elif cmd == "removeLocalChat":
 			self.handle_localDelete(db, p)
+		elif cmd == "localChatUsers":
+			self.handle_localChatUsers(db)
 
 
 if __name__ == "__main__":
     global HOST
-    HOST, PORT = "192.168.0.21", 4001
+    HOST, PORT = "192.168.0.14", 4001
+    runLocalChat()
 
     if len(sys.argv) > 1:
     	try:
