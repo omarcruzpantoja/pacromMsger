@@ -23,14 +23,14 @@ class pacrom_db:
 		except:
 			return 0
 
-	def AddMemberToLocalChat(self, userName):
+	def AddMemberToLocalChat(self, userName, address):
 		"""Once a user logged in to the local server, add them to the connected users"""
-		query = """INSERT INTO localUser (uname) values ("%s")""" % userName
-		print "Added to local chat [" + userName + "]\n"
+		query = """INSERT INTO localUser (uname, ipAddress) values ("%s", "%s")""" % (userName, address)
 		if userName == "":
 			return 0
 		try: 
 			self.c.execute(query)
+			print "Added to local chat [" + userName + "]\n"
 			return 1
 		except sqlite3.IntegrityError as error:
 			if error.message.split()[0] == "UNIQUE":
@@ -38,19 +38,19 @@ class pacrom_db:
 			else:
 				raise
 
-	def removeMemberFromLocalChat(self, userName) :
+	def removeMemberFromLocalChat(self, userName,address) :
 		"""Remove user from localchat once DC or logout"""
-		query = """DELETE FROM localUser where uname = ("%s")""" % userName
-		print "DC from local chat [" +userName+"]\n"
+		query = """DELETE FROM localUser where uname = ("%s") and ipAddress = ("%s") """ % (userName, address)
 		try:
 			self.c.execute(query)
+			print "DC from local chat [" +userName+"]\n"
 			return 1
 		except:
 			return 0
 
-	def GetLocalChatUsers(self):
+	def GetLocalChatUsers(self,address):
 		"""Will be used to show all the connected users in the local server"""
-		query = """ SELECT uname FROM localUser"""
+		query = """ SELECT uname FROM localUser where ipAddress = ("%s") """ % address
 
 		try:
 			self.c.execute(query)
@@ -66,17 +66,3 @@ def runLocalChat():
 
 # test = pacrom_db("pacromDB.db")
 # test.Connect()
-# def Adduser():
-
-# 	add = pacrom_db("pacromDB.db")
-# 	add.Connect()
-# 	add.AddMemberToLocalChat("slimshady") 
-# Adduser() 
-# lala =  test.GetLocalChatUsers() 
-# hey= ""
-# for data in lala:
-# 	hey = hey + data[0]+":"
-
-# hey = hey[:-1]
-# print hey
-# 	

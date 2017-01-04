@@ -12,3 +12,5 @@ class Packet:
 
 	def getLocalUserName(self, p):
 		return self.packet[1]
+	def getLocalIP(self, p):
+		return self.packet[2]
