@@ -34,13 +34,13 @@ class MetadataTCPHandler(SocketServer.BaseRequestHandler):
 			self.request.sendall("AHK")
 	def handle_localChatUsers(self, db):
 		users = db.GetLocalChatUsers() 
-		if len(users) = 0:
+		if len(users) == 0:
 			self.request.sendall("NoUsers")
 		else:
 			request = ""
 			for user in users:
-				request = user+":"
-			request = request[-1]
+				request = user[0]+":"
+			request = request[:-1]
 			self.request.sendall(request)
 			
 

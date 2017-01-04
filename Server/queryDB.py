@@ -50,7 +50,7 @@ class pacrom_db:
 
 	def GetLocalChatUsers(self):
 		"""Will be used to show all the connected users in the local server"""
-		query = """ SELECT * FROM localUser"""
+		query = """ SELECT uname FROM localUser"""
 
 		try:
 			self.c.execute(query)
@@ -72,4 +72,11 @@ def runLocalChat():
 # 	add.Connect()
 # 	add.AddMemberToLocalChat("slimshady") 
 # Adduser() 
-# print test.GetLocalChatUsers() 
+# lala =  test.GetLocalChatUsers() 
+# hey= ""
+# for data in lala:
+# 	hey = hey + data[0]+":"
+
+# hey = hey[:-1]
+# print hey
+# 	
